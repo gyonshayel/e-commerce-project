@@ -4,6 +4,7 @@ import { addDays } from "../../utils/addDays";
 
 export function OrderSummary({ deliveryOptions }) {
   const { cart, removeFromCart } = useCart();
+  const today = new Date();
 
   return (
     <div className="order-summary">
@@ -22,7 +23,8 @@ export function OrderSummary({ deliveryOptions }) {
           return (
             <div key={cartItem.id} className="cart-item-container">
               <div className="delivery-date">
-                Delivery date: {addDays(selectedDeliveryOption.deliveryDays)}
+                Delivery date:{" "}
+                {addDays(today, selectedDeliveryOption.deliveryDays)}
               </div>
 
               <div className="cart-item-details-grid">

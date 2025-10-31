@@ -4,8 +4,8 @@ import { useNavigate } from "react-router";
 import { formatMoney } from "../../utils/money";
 
 export function PaymentSummary({ paymentSummary }) {
-  const { cart, clearCart } = useCart();
   const navigate = useNavigate();
+  const { cart, clearCart } = useCart();
   const [orders, setOrders] = useState(() => {
     const arr = localStorage.getItem("orders");
     return arr ? JSON.parse(arr) : [];
@@ -19,8 +19,8 @@ export function PaymentSummary({ paymentSummary }) {
   const createOrder = () => {
     const orderId = crypto.randomUUID();
     const date = new Date();
-    const total = paymentSummary.totalCostCents;
-    const newOrder = { orderId, date, total, cart };
+    const totalCostCents = paymentSummary.totalCostCents;
+    const newOrder = { orderId, date, totalCostCents, products: cart };
     setOrders((prev) => [...prev, newOrder]);
 
     clearCart();

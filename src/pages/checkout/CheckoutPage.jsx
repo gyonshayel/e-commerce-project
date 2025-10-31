@@ -5,13 +5,7 @@ import { PaymentSummary } from "./PaymentSummary";
 import "./checkout-header.css";
 import "./CheckoutPage.css";
 
-const deliveryOptions = [
-  { id: 1, price: 0, deliveryDays: 7 },
-  { id: 2, price: 499, deliveryDays: 3 },
-  { id: 3, price: 999, deliveryDays: 1 },
-];
-
-export function CheckoutPage() {
+export function CheckoutPage({ deliveryOptions }) {
   const [paymentSummary, setPaymentSummary] = useState({});
   const { cart } = useCart();
 

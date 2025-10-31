@@ -1,6 +1,5 @@
-export function addDays(days) {
-  const today = new Date();
-  const result = new Date(today);
+export function addDays(date, days) {
+  const result = new Date(date);
   result.setDate(result.getDate() + days);
   return result.toLocaleDateString("en-US", {
     weekday: "long",

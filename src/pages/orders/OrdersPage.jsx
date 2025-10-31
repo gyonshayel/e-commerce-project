@@ -1,36 +1,34 @@
-import { useState, useEffect, Fragment } from "react";
+import { Fragment } from "react";
 import { Header } from "../../components/Header";
 import { formatMoney } from "../../utils/money";
+import { addDays } from "../../utils/addDays";
 import "./OrdersPage.css";
 
-export function OrdersPage({ cart }) {
-  const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
-    // axios.get('/api/orders?expand=products')
-    //   .then((response) => {
-    //     setOrders(response.data);
-    //   });
-  }, []);
+export function OrdersPage({ deliveryOptions }) {
+  const orders = JSON.parse(localStorage.getItem("orders"));
 
   return (
     <>
       <title>Orders</title>
-
-      <Header cart={cart} />
-
+      <Header />
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
 
         <div className="orders-grid">
           {orders.map((order) => {
             return (
-              <div key={order.id} className="order-container">
+              <div key={order.orderId} className="order-container">
                 <div className="order-header">
                   <div className="order-header-left-section">
                     <div className="order-date">
                       <div className="order-header-label">Order Placed:</div>
-                      <div>{dayjs(order.orderTimeMs).format("MMMM D")}</div>
+                      <div>
+                        {new Date(order.date).toLocaleDateString("en-US", {
+                          weekday: "long",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </div>
                     </div>
                     <div className="order-total">
                       <div className="order-header-label">Total:</div>
@@ -40,26 +38,31 @@ export function OrdersPage({ cart }) {
 
                   <div className="order-header-right-section">
                     <div className="order-header-label">Order ID:</div>
-                    <div>{order.id}</div>
+                    <div>{order.orderId}</div>
                   </div>
                 </div>
 
                 <div className="order-details-grid">
                   {order.products.map((orderProduct) => {
                     return (
-                      <Fragment key={orderProduct.product.id}>
+                      <Fragment key={orderProduct.id}>
                         <div className="product-image-container">
-                          <img src={orderProduct.product.image} />
+                          <img src={orderProduct.product.thumbnail} />
                         </div>
 
                         <div className="product-details">
                           <div className="product-name">
-                            {orderProduct.product.name}
+                            {orderProduct.product.title}
                           </div>
                           <div className="product-delivery-date">
                             Arriving on:{" "}
-                            {dayjs(orderProduct.estimatedDeliveryTimeMs).format(
-                              "MMMM D"
+                            {addDays(
+                              order.date,
+                              deliveryOptions.find(
+                                (deliveryOption) =>
+                                  deliveryOption.id ===
+                                  orderProduct.deliveryOptionId
+                              ).deliveryDays
                             )}
                           </div>
                           <div className="product-quantity">
@@ -71,7 +74,7 @@ export function OrdersPage({ cart }) {
                               src="images/icons/buy-again.png"
                             />
                             <span className="buy-again-message">
-                              Add to Cart
+                              Order Again
                             </span>
                           </button>
                         </div>

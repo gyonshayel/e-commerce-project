@@ -2,6 +2,8 @@ import { formatMoney } from "../../utils/money";
 import { addDays } from "../../utils/addDays";
 
 export function DeliveryOptions({ cartItem, deliveryOptions }) {
+  const today = new Date();
+
   return (
     <div className="delivery-options">
       <div className="delivery-options-title">Choose a delivery option:</div>
@@ -31,7 +33,7 @@ export function DeliveryOptions({ cartItem, deliveryOptions }) {
             />
             <div>
               <div className="delivery-option-date">
-                {addDays(deliveryOption.deliveryDays)}
+                {addDays(today, deliveryOption.deliveryDays)}
               </div>
               <div className="delivery-option-price">{priceString}</div>
             </div>
