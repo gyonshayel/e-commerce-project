@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Header } from "../../components/Header";
 import { ProductsGrid } from "./ProductsGrid";
 import "./HomePage.css";
 
@@ -15,7 +14,6 @@ export function HomePage() {
 
         const data = await response.json();
         setProducts(data.products);
-        console.log("products- ", data.products);
       } catch (error) {
         console.log(error.message);
       }
@@ -27,8 +25,6 @@ export function HomePage() {
   return (
     <>
       <title>E-Commerce Store</title>
-
-      <Header />
 
       <div className="home-page">
         <ProductsGrid products={products} />

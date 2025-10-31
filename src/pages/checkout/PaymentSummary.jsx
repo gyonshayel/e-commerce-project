@@ -13,7 +13,6 @@ export function PaymentSummary({ paymentSummary }) {
 
   useEffect(() => {
     localStorage.setItem("orders", JSON.stringify(orders));
-    console.log("orders- ", orders);
   }, [orders]);
 
   const createOrder = () => {

@@ -1,16 +1,26 @@
 import { Fragment } from "react";
-import { Header } from "../../components/Header";
+import { useNavigate } from "react-router";
 import { formatMoney } from "../../utils/money";
 import { addDays } from "../../utils/addDays";
 import "./OrdersPage.css";
 
 export function OrdersPage({ deliveryOptions }) {
-  const orders = JSON.parse(localStorage.getItem("orders"));
+  const arr = localStorage.getItem("orders");
+  const orders = arr ? JSON.parse(arr) : [];
+  const navigate = useNavigate();
+
+  const handleTracking = (orderId, productId) => {
+    const params = new URLSearchParams({
+      orderId: orderId,
+      productId: productId,
+    });
+    navigate(`/tracking?${params.toString()}`);
+  };
 
   return (
     <>
       <title>Orders</title>
-      <Header />
+
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
 
@@ -80,11 +90,14 @@ export function OrdersPage({ deliveryOptions }) {
                         </div>
 
                         <div className="product-actions">
-                          <a href="/tracking">
-                            <button className="track-package-button button-secondary">
-                              Track package
-                            </button>
-                          </a>
+                          <button
+                            onClick={() =>
+                              handleTracking(order.orderId, orderProduct.id)
+                            }
+                            className="track-package-button button-secondary"
+                          >
+                            Track package
+                          </button>
                         </div>
                       </Fragment>
                     );

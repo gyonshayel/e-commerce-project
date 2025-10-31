@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router";
+import { Header } from "../src/components/Header";
 import { HomePage } from "./pages/home/HomePage";
 import { CheckoutPage } from "./pages/checkout/CheckoutPage";
 import { OrdersPage } from "./pages/orders/OrdersPage";
-// import { TrackingPage } from "./pages/tracking/TrackingPage";
+import { TrackingPage } from "./pages/tracking/TrackingPage";
 import "./App.css";
 
 const deliveryOptions = [
@@ -13,18 +14,24 @@ const deliveryOptions = [
 
 function App() {
   return (
-    <Routes>
-      <Route index element={<HomePage />} />
-      <Route
-        path="checkout"
-        element={<CheckoutPage deliveryOptions={deliveryOptions} />}
-      />
-      <Route
-        path="orders"
-        element={<OrdersPage deliveryOptions={deliveryOptions} />}
-      />
-      {/* <Route path="tracking" element={<TrackingPage />} /> */}
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        <Route index element={<HomePage />} />
+        <Route
+          path="checkout"
+          element={<CheckoutPage deliveryOptions={deliveryOptions} />}
+        />
+        <Route
+          path="orders"
+          element={<OrdersPage deliveryOptions={deliveryOptions} />}
+        />
+        <Route
+          path="tracking"
+          element={<TrackingPage deliveryOptions={deliveryOptions} />}
+        />
+      </Routes>
+    </>
   );
 }
 
