@@ -20,8 +20,8 @@ function App() {
       <Header />
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path="/product/:id/details" element={<ProductDetailsPage />} />
         <Route path="/search/:query" element={<SearchResultsPage />} />
+        <Route path="/product/:id/details" element={<ProductDetailsPage />} />
         <Route
           path="checkout"
           element={<CheckoutPage deliveryOptions={deliveryOptions} />}
