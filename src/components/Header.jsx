@@ -24,7 +24,12 @@ export function Header() {
         </div>
 
         <div className="middle-section">
-          <input className="search-bar" type="text" placeholder="Search" />
+          <input
+            id="search-bar"
+            className="search-bar"
+            type="text"
+            placeholder="Search"
+          />
 
           <button className="search-button">
             <img
