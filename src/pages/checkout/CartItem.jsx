@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCart } from "../../context/CartContext";
 import { DeliveryOptions } from "./DeliveryOptions";
-import { addDays } from "../../utils/addDays";
+import { addDays, formatDate } from "../../utils/addDays";
 
 export function CartItem({ cartItem, deliveryOptions }) {
   const { removeFromCart, updateQuantity } = useCart();
@@ -25,7 +25,8 @@ export function CartItem({ cartItem, deliveryOptions }) {
   return (
     <div key={cartItem.id} className="cart-item-container">
       <div className="delivery-date">
-        Delivery date: {addDays(today, selectedDeliveryOption.deliveryDays)}
+        Delivery date:{" "}
+        {formatDate(addDays(today, selectedDeliveryOption.deliveryDays))}
       </div>
 
       <div className="cart-item-details-grid">

@@ -4,7 +4,6 @@ import { CartItem } from "./CartItem";
 
 export function OrderSummary({ deliveryOptions }) {
   const { cart } = useCart();
-  console.log(cart);
 
   if (cart.length === 0) {
     return (

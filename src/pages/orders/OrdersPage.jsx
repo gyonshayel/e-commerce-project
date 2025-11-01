@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { useNavigate } from "react-router";
 import { useCart } from "../../context/CartContext";
 import { formatMoney } from "../../utils/money";
-import { addDays } from "../../utils/addDays";
+import { addDays, formatDate } from "../../utils/addDays";
 import "./OrdersPage.css";
 
 export function OrdersPage({ deliveryOptions }) {
@@ -68,13 +68,15 @@ export function OrdersPage({ deliveryOptions }) {
                           </div>
                           <div className="product-delivery-date">
                             Arriving on:{" "}
-                            {addDays(
-                              order.date,
-                              deliveryOptions.find(
-                                (deliveryOption) =>
-                                  deliveryOption.id ===
-                                  orderProduct.deliveryOptionId
-                              ).deliveryDays
+                            {formatDate(
+                              addDays(
+                                order.date,
+                                deliveryOptions.find(
+                                  (deliveryOption) =>
+                                    deliveryOption.id ===
+                                    orderProduct.deliveryOptionId
+                                ).deliveryDays
+                              )
                             )}
                           </div>
                           <div className="product-quantity">

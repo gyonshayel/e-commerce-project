@@ -1,5 +1,6 @@
-import { addDays } from "../../utils/addDays";
+import { addDays, formatDate } from "../../utils/addDays";
 import { useSearchParams } from "react-router";
+import { getTrackingProgress } from "../../utils/getTrackingProgress";
 import "./TrackingPage.css";
 
 export function TrackingPage({ deliveryOptions }) {
@@ -15,6 +16,15 @@ export function TrackingPage({ deliveryOptions }) {
     (product) => String(product.id) === productId
   );
 
+  const deliveryDays = deliveryOptions.find(
+    (deliveryOption) => deliveryOption.id === trackingProduct.deliveryOptionId
+  ).deliveryDays;
+
+  const { progress, status } = getTrackingProgress(
+    trackingOrder.date,
+    deliveryDays
+  );
+
   return (
     <>
       <title>Tracking</title>
@@ -27,13 +37,7 @@ export function TrackingPage({ deliveryOptions }) {
 
           <div className="delivery-date">
             Arriving on{" "}
-            {addDays(
-              new Date(trackingOrder.date),
-              deliveryOptions.find(
-                (deliveryOption) =>
-                  deliveryOption.id === trackingProduct.deliveryOptionId
-              ).deliveryDays
-            )}
+            {formatDate(addDays(new Date(trackingOrder.date), deliveryDays))}
           </div>
 
           <div className="product-info">{trackingProduct.product.title}</div>
@@ -48,13 +52,34 @@ export function TrackingPage({ deliveryOptions }) {
           />
 
           <div className="progress-labels-container">
-            <div className="progress-label">Preparing</div>
-            <div className="progress-label current-status">Shipped</div>
-            <div className="progress-label">Delivered</div>
+            <div
+              className={`progress-label ${
+                status == "Preparing" ? "current-status" : ""
+              }`}
+            >
+              Preparing
+            </div>
+            <div
+              className={`progress-label ${
+                status == "Shipped" ? "current-status" : ""
+              }`}
+            >
+              Shipped
+            </div>
+            <div
+              className={`progress-label ${
+                status == "Delivered" ? "current-status" : ""
+              }`}
+            >
+              Delivered
+            </div>
           </div>
 
           <div className="progress-bar-container">
-            <div className="progress-bar"></div>
+            <div
+              className="progress-bar"
+              style={{ width: `${progress}%` }}
+            ></div>
           </div>
         </div>
       </div>
