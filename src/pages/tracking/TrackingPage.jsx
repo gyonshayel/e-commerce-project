@@ -15,8 +15,6 @@ export function TrackingPage({ deliveryOptions }) {
     (product) => String(product.id) === productId
   );
 
-  console.log(trackingProduct);
-
   return (
     <>
       <title>Tracking</title>
@@ -28,7 +26,7 @@ export function TrackingPage({ deliveryOptions }) {
           </a>
 
           <div className="delivery-date">
-            Arriving on
+            Arriving on{" "}
             {addDays(
               new Date(trackingOrder.date),
               deliveryOptions.find(

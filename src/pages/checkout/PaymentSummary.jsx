@@ -49,7 +49,10 @@ export function PaymentSummary({ paymentSummary }) {
           <div className="payment-summary-row subtotal-row">
             <div>Total before tax:</div>
             <div className="payment-summary-money">
-              {formatMoney(paymentSummary.productCostCents)}
+              {formatMoney(
+                paymentSummary.productCostCents +
+                  paymentSummary.shippingCostCents
+              )}
             </div>
           </div>
 
@@ -70,6 +73,7 @@ export function PaymentSummary({ paymentSummary }) {
           <button
             className="place-order-button button-primary"
             onClick={createOrder}
+            disabled={cart.length === 0}
           >
             Place your order
           </button>
