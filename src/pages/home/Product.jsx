@@ -86,8 +86,12 @@ export function Product({ product }) {
 
       <div className="flex-1"></div>
 
-      {isAdded && (
-        <div className="flex items-center mb-2 text-[rgb(6,125,98)] text-[16px] opacity-100">
+      {
+        <div
+          className={`flex items-center mb-2 text-[rgb(6,125,98)] text-[16px] opacity-${
+            isAdded ? "100" : "0"
+          }`}
+        >
           <img
             className="h-5 mr-[5px]"
             src="../public/images/icons/checkmark.png"
@@ -95,7 +99,7 @@ export function Product({ product }) {
           />
           Added
         </div>
-      )}
+      }
 
       <button
         className="w-full py-2 rounded-[50px] bg-[rgb(255,216,20)] border border-[rgb(252,210,0)]
