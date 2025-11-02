@@ -51,7 +51,7 @@ export function CheckoutPage({ deliveryOptions }) {
           <div className="w-[150px] max-[575px]:w-auto">
             <Link to="/">
               <img
-                className="w-[100px] mt-3max-[575px]:hidden"
+                className="w-[100px] mt-3 max-[575px]:hidden"
                 src="images/logo.png"
                 alt="Logo"
               />
@@ -66,7 +66,7 @@ export function CheckoutPage({ deliveryOptions }) {
           <div className="flex-1 flex justify-center text-center text-[22px] font-medium max-[1000px]:text-[20px] max-[1000px]:mr-[60px] max-[575px]:mr-[5px]">
             Checkout (
             <Link
-              className="text-[23px] text-[rgb(0,113,133)] no-underline cursor-pointer max-[1000px]:text-[18px]"
+              className="text-[rgb(0,113,133)] no-underline cursor-pointer max-[1000px]:text-[18px]"
               to="/"
             >
               {`${paymentSummary.totalItems} items`}
@@ -76,7 +76,7 @@ export function CheckoutPage({ deliveryOptions }) {
 
           <div className="text-right w-[150px] max-[1000px]:w-auto">
             <img
-              className="h-8"
+              className="w-4"
               src="images/icons/checkout-lock-icon.png"
               alt="Secure Icon"
             />

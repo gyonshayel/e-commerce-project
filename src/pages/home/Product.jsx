@@ -44,9 +44,7 @@ export function Product({ product }) {
           />
         </div>
 
-        <div className="h-10 mb-[5px] line-clamp-2 limit-text-to-2-lines">
-          {product.title}
-        </div>
+        <div className="h-10 mb-[5px]">{product.title}</div>
       </Link>
 
       <div className="flex items-center mb-2.5">
@@ -102,7 +100,7 @@ export function Product({ product }) {
       }
 
       <button
-        className="w-full py-2 rounded-[50px] bg-[rgb(255,216,20)] border border-[rgb(252,210,0)]
+        className="w-full py-1 text-[12px] rounded-[50px] bg-[rgb(255,216,20)] border border-[rgb(252,210,0)]
                    hover:bg-[rgb(247,202,0)] hover:border-[rgb(242,194,0)]
                    active:shadow-none button-primary"
         data-testid="add-to-cart-button"

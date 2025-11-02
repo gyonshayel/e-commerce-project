@@ -8,9 +8,9 @@ export function OrderSummary({ deliveryOptions }) {
   if (cart.length === 0) {
     return (
       <div>
-        <p>Your Cart is empty</p>
-        <Link to="/">
-          <button>View Products</button>
+        <p>Your Cart is empty.</p>
+        <Link to="/" className="link-primary">
+          View Products
         </Link>
       </div>
     );

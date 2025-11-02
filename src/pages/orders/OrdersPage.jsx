@@ -35,7 +35,7 @@ export function OrdersPage({ deliveryOptions }) {
                   <div className="flex shrink-0 max-[575px]:flex-col">
                     <div className="mr-[45px] max-[575px]:grid max-[575px]:grid-cols-[auto_1fr]">
                       <div className="font-medium mr-[45px] max-[575px]:mr-[5px]">
-                        Order Placed:
+                        <strong>Order Placed:</strong>
                       </div>
                       <div>
                         {new Date(order.date).toLocaleDateString("en-US", {
@@ -46,24 +46,30 @@ export function OrdersPage({ deliveryOptions }) {
                       </div>
                     </div>
                     <div className="mr-[45px] max-[575px]:grid max-[575px]:grid-cols-[auto_1fr]">
-                      <div className="order-header-label">Total:</div>
+                      <div className="order-header-label">
+                        {" "}
+                        <strong>Total:</strong>
+                      </div>
                       <div>{formatMoney(order.totalCostCents)}</div>
                     </div>
                   </div>
 
                   <div className="shrink max-[575px]:grid max-[575px]:grid-cols-[auto_1fr]">
-                    <div className="text-[15px]">Order ID:</div>
+                    <div className="text-[15px]">
+                      {" "}
+                      <strong>Order ID:</strong>
+                    </div>
                     <div>{order.orderId}</div>
                   </div>
                 </div>
 
-                <div className="border border-[#D5D9D9] border-t-0 rounded-b-lg p-[40px_25px] grid grid-cols-[110px_1fr_220px] gap-x-[35px] gap-y-[60px] items-center max-[800px]:grid-cols-[110px_1fr] max-[800px]:gap-y-0 max-[800px]:pb-2max-[450px]:grid-cols-1">
+                <div className="border border-[#D5D9D9] border-t-0 rounded-b-lg p-[40px_25px] grid grid-cols-[110px_1fr_220px] gap-x-[35px] gap-y-[60px] items-center max-[800px]:grid-cols-[110px_1fr] max-[800px]:gap-y-0 max-[800px]:pb-2 max-[450px]:grid-cols-1">
                   {order.products.map((orderProduct) => {
                     return (
                       <Fragment key={orderProduct.id}>
                         <div className="text-center max-[450px]:mb-[25px]">
                           <img
-                            className="max-w-[110px] max-h-[110px] max-[450px]:max-w-[150px] max-[450px]:max-h-[150px]"
+                            className="max-w-[110px] max-h-[110px] max-[450px]:max-w-[150px] max-[450px]:max-h-[150px] mx-auto"
                             src={orderProduct.product.thumbnail}
                             alt={orderProduct.product.title}
                           />
@@ -115,7 +121,7 @@ export function OrdersPage({ deliveryOptions }) {
                             onClick={() =>
                               handleTracking(order.orderId, orderProduct.id)
                             }
-                            className="w-full text-[15px] p-2 max-[450px]:p-3 max-[800px]:w-[140px] button-secondary"
+                            className="w-full text-[15px] p-2 max-[450px]:p-3 max-[800px]:w-[140px] max-[450px]:w-full max-[450px]:mb-[15px] button-secondary"
                           >
                             Track package
                           </button>

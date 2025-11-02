@@ -19,7 +19,7 @@ export function DeliveryOptions({ cartItem, deliveryOptions }) {
         return (
           <div
             key={deliveryOption.id}
-            className="grid grid-cols-[24px_1fr] mb-3 cursor-pointer"
+            className="grid grid-cols-[24px_1fr] gap-4 mb-3 cursor-pointer"
             onClick={() => updateDeliveryOption(cartItem.id, deliveryOption.id)}
           >
             <input

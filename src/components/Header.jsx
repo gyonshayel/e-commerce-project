@@ -43,7 +43,7 @@ export function Header() {
             </Link>
           </div>
 
-          <div className="flex items-center flex-[1_1_auto] min-w-0 mx-3">
+          <div className="flex items-center flex-[1_1_auto] min-w-0 max-w-[700px] px-6 mx-auto">
             <input
               id="search-bar"
               className="flex-1 min-w-0 bg-white text-black text-[15px] h-[38px] pl-3 rounded-l-sm focus:outline-none"
