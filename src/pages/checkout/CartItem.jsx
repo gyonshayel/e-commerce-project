@@ -50,12 +50,14 @@ export function CartItem({ cartItem, deliveryOptions }) {
               {isUpdating ? (
                 <span>
                   <input
+                    className="outline outline-gray-400"
                     type="number"
                     min="1"
                     value={quantity}
-                    onChange={(event) =>
-                      setQuantity(parseInt(event.target.value))
-                    }
+                    onChange={(event) => {
+                      const value = parseInt(event.target.value);
+                      setQuantity(isNaN(value) ? 1 : value);
+                    }}
                   />
                   <span
                     className="text-[rgb(1,124,182)] hover:text-[rgb(196,80,0)] ml-[3px] cursor-pointer link-primary"

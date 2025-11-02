@@ -43,7 +43,7 @@ export function Header() {
             </Link>
           </div>
 
-          <div className="flex items-center flex-[1_1_auto] min-w-0 max-w-[700px] px-6 mx-auto">
+          <form className="flex items-center flex-[1_1_auto] min-w-0 max-w-[700px] px-6 mx-auto">
             <input
               id="search-bar"
               className="flex-1 min-w-0 bg-white text-black text-[15px] h-[38px] pl-3 rounded-l-sm focus:outline-none"
@@ -62,7 +62,7 @@ export function Header() {
                 className="h-5 min-w-5"
               />
             </button>
-          </div>
+          </form>
 
           <div className="hidden sm:flex items-center space-x-4 shrink-0">
             <Link
@@ -92,6 +92,7 @@ export function Header() {
           {/* Mobile nav button */}
           <div className="sm:hidden shrink-0">
             <button
+              aria-label="Toggle menu"
               className="p-2 focus:outline-none"
               onClick={() => setMenuOpen(!menuOpen)}
             >
@@ -107,7 +108,9 @@ export function Header() {
         {/* Mobile dropdown menu */}
         <div
           className={`sm:hidden bg-[rgb(19,25,33)] flex flex-col items-start px-5 py-3 space-y-3 text-white overflow-hidden transition-all duration-300 ${
-            menuOpen ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
+            menuOpen
+              ? "max-h-[200px] opacity-100 visible"
+              : "max-h-0 opacity-0 invisible"
           }`}
         >
           <Link

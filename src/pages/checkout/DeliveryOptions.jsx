@@ -26,7 +26,7 @@ export function DeliveryOptions({ cartItem, deliveryOptions }) {
               type="radio"
               checked={deliveryOption.id === cartItem.deliveryOptionId}
               onChange={() => {}}
-              className="ml-0 cursor-pointer"
+              className="cursor-pointer"
               name={`delivery-option-${cartItem.id}`}
             />
             <div>

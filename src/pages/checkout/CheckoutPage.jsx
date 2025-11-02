@@ -24,7 +24,7 @@ export function CheckoutPage({ deliveryOptions }) {
           (option) => option.id === cartItem.deliveryOptionId
         );
 
-        shippingCostCents += deliveryOption.price;
+        shippingCostCents += deliveryOption ? deliveryOption.price : 0;
       });
 
       const taxCents = Math.round(productCostCents * 0.1);
@@ -68,6 +68,7 @@ export function CheckoutPage({ deliveryOptions }) {
             <Link
               className="text-[rgb(0,113,133)] no-underline cursor-pointer max-[1000px]:text-[18px]"
               to="/"
+              aria-label={`${paymentSummary.totalItems} items in cart`}
             >
               {`${paymentSummary.totalItems} items`}
             </Link>
