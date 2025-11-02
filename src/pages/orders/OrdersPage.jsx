@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { useCart } from "../../context/CartContext";
 import { formatMoney } from "../../utils/money";
 import { addDays, formatDate } from "../../utils/addDays";
+import { Header } from "../../components/Header";
 
 export function OrdersPage({ deliveryOptions }) {
   const arr = localStorage.getItem("orders");
@@ -21,6 +22,7 @@ export function OrdersPage({ deliveryOptions }) {
   return (
     <>
       <title>Orders</title>
+      <Header />
 
       <div className="max-w-[850px] mt-[90px] mb-[100px] px-5 mx-auto">
         <h1 className="font-bold text-[26px] mb-[25px]">Your Orders</h1>

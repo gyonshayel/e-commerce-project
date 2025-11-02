@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { Header } from "../../components/Header";
 import { ProductsGrid } from "../home/ProductsGrid";
 
 export function SearchResultsPage() {
@@ -28,6 +29,7 @@ export function SearchResultsPage() {
 
   return (
     <>
+      <Header />
       {results.length === 0 ? (
         <div>
           <p>No search results</p>

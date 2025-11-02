@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { addDays, formatDate } from "../../utils/addDays";
 import { useSearchParams } from "react-router";
 import { getTrackingProgress } from "../../utils/getTrackingProgress";
+import { Header } from "../../components/Header";
 
 export function TrackingPage({ deliveryOptions }) {
   const [searchParams] = useSearchParams();
@@ -28,6 +29,7 @@ export function TrackingPage({ deliveryOptions }) {
   return (
     <>
       <title>Tracking</title>
+      <Header />
 
       <section>
         <div className="max-w-[850px] mt-[90px] mb-[100px] px-[30px] mx-auto">

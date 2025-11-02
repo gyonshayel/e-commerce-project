@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
+import { Header } from "../../components/Header";
 import { useCart } from "../../context/CartContext";
 
 export function ProductDetailsPage() {
@@ -34,6 +35,7 @@ export function ProductDetailsPage() {
 
   return (
     <>
+      <Header />
       <div className="mt-[60px] px-6 md:px-12 lg:px-20 py-10 bg-white text-gray-800">
         <div className="flex flex-col lg:flex-row gap-10">
           <div className="flex flex-col items-center w-full lg:w-1/2">

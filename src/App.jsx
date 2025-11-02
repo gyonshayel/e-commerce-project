@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router";
-import { Header } from "../src/components/Header";
 import { HomePage } from "./pages/home/HomePage";
 import { ProductDetailsPage } from "./pages/details/ProductDetailsPage";
 import { SearchResultsPage } from "./pages/search/SearchResultsPage";
@@ -16,7 +15,6 @@ const deliveryOptions = [
 function App() {
   return (
     <>
-      <Header />
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/search/:query" element={<SearchResultsPage />} />

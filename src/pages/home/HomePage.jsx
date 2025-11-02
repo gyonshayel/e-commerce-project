@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Header } from "../../components/Header";
 import { ProductsGrid } from "./ProductsGrid";
 
 export function HomePage() {
@@ -62,6 +63,8 @@ export function HomePage() {
   return (
     <>
       <title>E-Commerce Store</title>
+
+      <Header />
 
       <div className="mt-[60px]">
         <ProductsGrid products={products} />
