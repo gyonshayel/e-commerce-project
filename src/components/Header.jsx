@@ -5,6 +5,7 @@ import { useCart } from "../context/CartContext";
 
 export function Header() {
   const [query, setQuery] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { cart } = useCart();
   let totalQuantity = 0;
@@ -22,76 +23,107 @@ export function Header() {
 
   return (
     <>
-      <header
-        className="bg-[rgb(19,25,33)] text-white px-[15px]
-         flex items-center justify-between
-         fixed top-0 left-0 right-0 h-[60px]"
-      >
-        <div className="shrink-0">
-          <Link
-            to="/"
-            className="inline-block p-1.5 rounded-xs cursor-pointer no-underline border border-transparent hover:border-white"
-          >
-            <img
-              className="w-[100px] mt-[5px] max-[575px]:hidden"
-              src="/images/logo-white.png"
-              alt="Amazon Logo"
+      <header className="bg-[rgb(19,25,33)] text-white fixed top-0 left-0 right-0 z-50">
+        <div className="flex items-center justify-between h-[60px] px-4 md:px-6">
+          <div className="shrink-0">
+            <Link
+              to="/"
+              className="p-1.5 rounded-sm cursor-pointer border border-transparent hover:border-white transition"
+            >
+              <img
+                src="/images/logo-white.png"
+                alt="Amazon Logo"
+                className="w-[100px] hidden sm:block"
+              />
+              <img
+                src="/images/mobile-logo-white.png"
+                alt="Amazon Mobile Logo"
+                className="w-[30px] min-w-[30px] block sm:hidden"
+              />
+            </Link>
+          </div>
+
+          <div className="flex items-center flex-[1_1_auto] min-w-0 mx-3">
+            <input
+              id="search-bar"
+              className="flex-1 min-w-0 bg-white text-black text-[15px] h-[38px] pl-3 rounded-l-sm focus:outline-none"
+              type="text"
+              placeholder="Search for products"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
-            <img
-              className="hidden max-[575px]:block h-[35px] mt-[5px]"
-              src="/images/mobile-logo-white.png"
-              alt="Amazon Logo"
-            />
-          </Link>
+            <button
+              onClick={handleSearch}
+              className="bg-[rgb(254,189,105)] w-[45px] h-[38px] rounded-r-sm flex items-center justify-center"
+            >
+              <img
+                src="/images/icons/search-icon.png"
+                alt="Search"
+                className="h-5 min-w-5"
+              />
+            </button>
+          </div>
+
+          <div className="hidden sm:flex items-center space-x-4 shrink-0">
+            <Link
+              to="/orders"
+              className="text-white no-underline hover:text-[rgb(254,189,105)] transition"
+            >
+              <span className="block text-[12px]">Returns</span>
+              <span className="block text-[14px] font-bold">& Orders</span>
+            </Link>
+
+            <Link
+              to="/checkout"
+              className="relative flex items-center text-white no-underline hover:text-[rgb(254,189,105)] transition"
+            >
+              <img
+                src="/images/icons/cart-icon.png"
+                alt="Cart"
+                className="w-[45px]"
+              />
+              <span className="absolute -top-1 left-4.5 bg-[rgb(254,189,105)] text-black font-bold text-[12px] rounded-full px-1.5">
+                {totalQuantity}
+              </span>
+              <span className="ml-1 text-[15px] font-bold">Cart</span>
+            </Link>
+          </div>
+
+          {/* Mobile nav button */}
+          <div className="sm:hidden shrink-0">
+            <button
+              className="p-2 focus:outline-none"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <img
+                src="/images/icons/hamburger-menu.png"
+                alt="Menu"
+                className="w-5 h-5"
+              />
+            </button>
+          </div>
         </div>
 
-        <input
-          id="search-bar"
-          className="flex-1 shrink bg-white text-black  text-[16px] h-[38px] pl-[15px] md:ml-[30px] border-none
-             rounded-l-sm"
-          type="text"
-          placeholder="Search for products"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-
-        <button
-          className="bg-[rgb(254,189,105)] border-none w-[45px] h-10
-             rounded-r-sm shrink-0"
-          onClick={handleSearch}
+        {/* Mobile dropdown menu */}
+        <div
+          className={`sm:hidden bg-[rgb(19,25,33)] flex flex-col items-start px-5 py-3 space-y-3 text-white overflow-hidden transition-all duration-300 ${
+            menuOpen ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
+          }`}
         >
-          <img
-            className="h-[22px] m-auto"
-            src="/images/icons/search-icon.png"
-          />
-        </button>
-
-        <div className=" w-[180px] shrink-0 flex justify-end">
           <Link
-            className="text-white no-underline text-center mr-4"
             to="/orders"
+            className="w-full text-left text-[15px] transition"
+            onClick={() => setMenuOpen(false)}
           >
-            <span className="block text-[13px] text-left">Returns</span>
-            <span className="block text-[15px] font-bold">& Orders</span>
+            Returns & Orders
           </Link>
 
           <Link
-            className="text-white flex items-center relative"
             to="/checkout"
+            className="w-full text-left text-[15px]  transition"
+            onClick={() => setMenuOpen(false)}
           >
-            <img
-              className="w-[50px]"
-              src="/images/icons/cart-icon.png"
-              alt="cart"
-            />
-            <div
-              className="text-[rgb(240,136,4)] text-[16px] font-bold
-               absolute top-0 left-4 w-[26px] text-center"
-            >
-              {" "}
-              {totalQuantity}
-            </div>
-            <div className="mt-3 text-[15px] font-bold">Cart</div>
+            Cart ({totalQuantity})
           </Link>
         </div>
       </header>
