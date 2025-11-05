@@ -6,6 +6,7 @@ import { useCart } from "../../context/CartContext";
 export function ProductDetailsPage() {
   const [productDetails, setProductDetails] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const [mainImage, setMainImage] = useState(null);
   const { addToCart } = useCart();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -25,8 +26,9 @@ export function ProductDetailsPage() {
         const data = await response.json();
 
         setProductDetails(data);
+        setMainImage(data.thumbnail);
       } catch (error) {
-        console.log(error.message);
+        alert(error.message);
       }
     };
 
@@ -41,7 +43,7 @@ export function ProductDetailsPage() {
           <div className="flex flex-col items-center w-full lg:w-1/2">
             <img
               className="w-full max-w-[400px] rounded-lg shadow-md mb-4 object-contain"
-              src={productDetails.thumbnail}
+              src={mainImage}
               alt={productDetails.title}
             />
             <div className="flex gap-3 flex-wrap justify-center">
@@ -51,6 +53,7 @@ export function ProductDetailsPage() {
                   key={index}
                   src={image}
                   alt={`Image ${index + 1}`}
+                  onClick={() => setMainImage(image)}
                 />
               ))}
             </div>
@@ -121,20 +124,20 @@ export function ProductDetailsPage() {
                   name="product-quantity"
                   onChange={selectQuantity}
                 >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
+                  {[...Array(10)].map((_, i) => (
+                    <option key={i + 1} value={i + 1}>
+                      {i + 1}
+                    </option>
+                  ))}
                 </select>
               </div>
               <button
-                className="flex-1 bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 text-gray-900 font-semibold py-2 rounded-md shadow-md transition-all duration-200"
+                disabled={productDetails.stock <= 0}
+                className={`flex-1 py-2 rounded-md shadow-md font-semibold transition-all duration-200 ${
+                  productDetails.stock > 0
+                    ? "bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 text-gray-900"
+                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                }`}
                 onClick={() =>
                   addToCart({
                     id: productDetails.id,
@@ -147,7 +150,12 @@ export function ProductDetailsPage() {
                 Add to Cart
               </button>
               <button
-                className="flex-1 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold py-2 rounded-md shadow-md transition-all duration-200"
+                disabled={productDetails.stock <= 0}
+                className={`flex-1 py-2 rounded-md shadow-md font-semibold transition-all duration-200 ${
+                  productDetails.stock > 0
+                    ? "bg-orange-400 hover:bg-orange-500 active:bg-orange-600 text-white"
+                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                }`}
                 onClick={() => {
                   addToCart({
                     id: productDetails.id,
@@ -175,7 +183,7 @@ export function ProductDetailsPage() {
             <li>
               <strong>Weight:</strong> {productDetails.weight}
             </li>
-            <li>{`Depth: ${productDetails.dimensions?.depth}cm Height: ${productDetails.dimensions?.depth}cm Width: ${productDetails.dimensions?.depth}cm`}</li>
+            <li>{`Depth: ${productDetails.dimensions?.depth}cm Height: ${productDetails.dimensions?.height}cm Width: ${productDetails.dimensions?.width}cm`}</li>
           </ul>
         </section>
 

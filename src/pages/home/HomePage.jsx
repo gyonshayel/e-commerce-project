@@ -25,7 +25,7 @@ export function HomePage() {
         setProducts(data.products);
         setTotal(data.total);
       } catch (error) {
-        console.log(error.message);
+        alert(error.message);
       } finally {
         setLoading(false);
       }

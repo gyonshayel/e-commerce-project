@@ -9,7 +9,7 @@ export function TrackingPage({ deliveryOptions }) {
   const orderId = searchParams.get("orderId");
   const productId = searchParams.get("productId");
 
-  const orders = JSON.parse(localStorage.getItem("orders"));
+  const orders = JSON.parse(localStorage.getItem("orders") || []);
   const trackingOrder = orders.find(
     (order) => String(order.orderId) === orderId
   );
@@ -58,21 +58,21 @@ export function TrackingPage({ deliveryOptions }) {
           <div className="flex justify-between font-medium text-[20px] mb-[15px] max-[575px]:text-[16px] max-[450px]:flex-col max-[450px]:mb-[5px]">
             <div
               className={`max-[450px]:mb-[3px] ${
-                status == "Preparing" ? "text-[rgb(6,125,98)]" : ""
+                status === "Preparing" ? "text-[rgb(6,125,98)]" : ""
               }`}
             >
               Preparing
             </div>
             <div
               className={`max-[450px]:mb-[3px] ${
-                status == "Shipped" ? "text-[rgb(6,125,98)]" : ""
+                status === "Shipped" ? "text-[rgb(6,125,98)]" : ""
               }`}
             >
               Shipped
             </div>
             <div
               className={`max-[450px]:mb-[3px] ${
-                status == "Delivered" ? "text-[rgb(6,125,98)]" : ""
+                status === "Delivered" ? "text-[rgb(6,125,98)]" : ""
               }`}
             >
               Delivered

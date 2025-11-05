@@ -20,7 +20,7 @@ export function SearchResultsPage() {
 
         setResults(data.products);
       } catch (error) {
-        console.log(error.message);
+        alert(error.message);
       }
     };
 
@@ -29,14 +29,14 @@ export function SearchResultsPage() {
 
   return (
     <>
+      <title>E-Commerce Store</title>
       <Header />
       {results.length === 0 ? (
-        <div>
-          <p>No search results</p>
+        <div className="text-center mt-20 text-gray-600">
+          No products found for <strong>{query}</strong>
         </div>
       ) : (
         <>
-          <title>E-Commerce Store</title>
           <div className="mt-[60px]">
             <ProductsGrid products={results} />
           </div>

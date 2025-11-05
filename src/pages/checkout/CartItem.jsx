@@ -50,7 +50,7 @@ export function CartItem({ cartItem, deliveryOptions }) {
               {isUpdating ? (
                 <span>
                   <input
-                    className="outline outline-gray-400"
+                    className="outline outline-gray-400 w-12"
                     type="number"
                     min="1"
                     value={quantity}
@@ -59,31 +59,31 @@ export function CartItem({ cartItem, deliveryOptions }) {
                       setQuantity(isNaN(value) ? 1 : value);
                     }}
                   />
-                  <span
+                  <button
                     className="text-[rgb(1,124,182)] hover:text-[rgb(196,80,0)] ml-[3px] cursor-pointer link-primary"
                     onClick={handleSave}
                   >
                     Save
-                  </span>
+                  </button>
                 </span>
               ) : (
                 <span>
                   <span className="quantity-label">{cartItem.quantity}</span>
-                  <span
+                  <button
                     className="text-[rgb(1,124,182)] hover:text-[rgb(196,80,0)] ml-[3px] cursor-pointer link-primary"
                     onClick={() => setIsUpdating(true)}
                   >
                     Update
-                  </span>
+                  </button>
                 </span>
               )}
             </span>
-            <span
+            <button
               className="text-[rgb(1,124,182)] hover:text-[rgb(196,80,0)] ml-[3px] cursor-pointer link-primary"
               onClick={() => removeFromCart(cartItem.id)}
             >
               Delete
-            </span>
+            </button>
           </div>
         </div>
 

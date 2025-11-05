@@ -17,27 +17,28 @@ export function DeliveryOptions({ cartItem, deliveryOptions }) {
         }
 
         return (
-          <div
+          <label
             key={deliveryOption.id}
             className="grid grid-cols-[24px_1fr] gap-4 mb-3 cursor-pointer"
-            onClick={() => updateDeliveryOption(cartItem.id, deliveryOption.id)}
           >
             <input
               type="radio"
               checked={deliveryOption.id === cartItem.deliveryOptionId}
-              onChange={() => {}}
+              onChange={() =>
+                updateDeliveryOption(cartItem.id, deliveryOption.id)
+              }
               className="cursor-pointer"
               name={`delivery-option-${cartItem.id}`}
             />
             <div>
-              <div className="text-[rgb(0,118,0)] font-medium mb-[3px]">
+              <div className="text-[rgb(0,118,0)] font-bold mb-[3px]">
                 {formatDate(addDays(today, deliveryOption.deliveryDays))}
               </div>
               <div className="text-[15px] text-[rgb(120,120,120)]">
                 {priceString}
               </div>
             </div>
-          </div>
+          </label>
         );
       })}
     </div>

@@ -92,27 +92,26 @@ export function OrdersPage({ deliveryOptions }) {
                               )
                             )}
                           </div>
-                          <div className="mb-2max-[450px]:mb-[15px]">
+                          <div className="mb-2 max-[450px]:mb-[15px]">
                             Quantity: {orderProduct.quantity}
                           </div>
-                          <button className="flex items-center justify-center text-[15px] w-[140px] h-9 rounded-lg max-[800px]:mb-2.5 max-[450px]:w-full max-[450px]:mb-[15px] button-primary">
+                          <button
+                            className="flex items-center justify-center text-[15px] w-[140px] h-9 rounded-lg max-[800px]:mb-2.5 max-[450px]:w-full max-[450px]:mb-[15px] button-primary"
+                            onClick={() =>
+                              addToCart({
+                                id: orderProduct.id,
+                                quantity: orderProduct.quantity,
+                                product: orderProduct.product,
+                                deliveryOptionId: 1,
+                              })
+                            }
+                          >
                             <img
                               className="w-[25px] mr-[15px]"
                               src="images/icons/buy-again.png"
                               alt="buy-again-icon"
                             />
-                            <span
-                              onClick={() =>
-                                addToCart({
-                                  id: orderProduct.id,
-                                  quantity: orderProduct.quantity,
-                                  product: orderProduct.product,
-                                  deliveryOptionId: 1,
-                                })
-                              }
-                            >
-                              Order Again
-                            </span>
+                            <span>Order Again</span>
                           </button>
                         </div>
 

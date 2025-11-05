@@ -9,37 +9,33 @@ export function CheckoutPage({ deliveryOptions }) {
   const { cart } = useCart();
 
   useEffect(() => {
-    const getPaymentSummary = () => {
-      let productCostCents = 0;
-      let totalItems = 0;
-      let shippingCostCents = 0;
+    let productCostCents = 0;
+    let totalItems = 0;
+    let shippingCostCents = 0;
 
-      cart.forEach((cartItem) => {
-        totalItems += cartItem.quantity;
-        productCostCents += Math.round(
-          cartItem.quantity * cartItem.product.price * 100
-        );
+    cart.forEach((cartItem) => {
+      totalItems += cartItem.quantity;
+      productCostCents += Math.round(
+        cartItem.quantity * cartItem.product.price * 100
+      );
 
-        const deliveryOption = deliveryOptions.find(
-          (option) => option.id === cartItem.deliveryOptionId
-        );
+      const deliveryOption = deliveryOptions.find(
+        (option) => option.id === cartItem.deliveryOptionId
+      );
 
-        shippingCostCents += deliveryOption ? deliveryOption.price : 0;
-      });
+      shippingCostCents += deliveryOption ? deliveryOption.price : 0;
+    });
 
-      const taxCents = Math.round(productCostCents * 0.1);
-      const totalCostCents = productCostCents + shippingCostCents + taxCents;
+    const taxCents = Math.round(productCostCents * 0.1);
+    const totalCostCents = productCostCents + shippingCostCents + taxCents;
 
-      setPaymentSummary({
-        productCostCents,
-        shippingCostCents,
-        taxCents,
-        totalCostCents,
-        totalItems,
-      });
-    };
-
-    getPaymentSummary();
+    setPaymentSummary({
+      productCostCents,
+      shippingCostCents,
+      taxCents,
+      totalCostCents,
+      totalItems,
+    });
   }, [cart]);
 
   return (

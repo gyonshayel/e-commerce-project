@@ -44,20 +44,18 @@ export function Product({ product }) {
           />
         </div>
 
-        <div className="h-10 mb-[5px]">{product.title}</div>
+        <h3 className="h-10 mb-[5px]">{product.title}</h3>
       </Link>
 
       <div className="flex items-center mb-2.5">
         <img
           className="w-[100px] mr-1.5"
           data-testid="product-rating-stars-image"
-          src={`../../public/images/ratings/rating-${
-            Math.round(product.rating) * 10
-          }.png`}
+          src={`/images/ratings/rating-${Math.round(product.rating) * 10}.png`}
           alt="rating"
         />
         <div className="text-[rgb(1,124,182)] cursor-pointer mt-[3px] link-primary">
-          {product.reviews.length}
+          {product.reviews?.length ?? 0}
         </div>
       </div>
 
@@ -67,18 +65,14 @@ export function Product({ product }) {
         <select
           value={quantity}
           name="product-quantity"
+          disabled={product.stock <= 0}
           onChange={selectQuantity}
         >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
+          {[...Array(10)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>
+              {i + 1}
+            </option>
+          ))}
         </select>
       </div>
 
@@ -86,13 +80,13 @@ export function Product({ product }) {
 
       {
         <div
-          className={`flex items-center mb-2 text-[rgb(6,125,98)] text-[16px] opacity-${
-            isAdded ? "100" : "0"
+          className={`flex items-center mb-2 text-[rgb(6,125,98)] text-[16px] ${
+            isAdded ? "opacity-100" : "opacity-0"
           }`}
         >
           <img
             className="h-5 mr-[5px]"
-            src="../public/images/icons/checkmark.png"
+            src="/images/icons/checkmark.png"
             alt="Added"
           />
           Added
@@ -104,9 +98,10 @@ export function Product({ product }) {
                    hover:bg-[rgb(247,202,0)] hover:border-[rgb(242,194,0)]
                    active:shadow-none button-primary"
         data-testid="add-to-cart-button"
+        disabled={product.stock <= 0}
         onClick={handleAddToCart}
       >
-        Add to Cart
+        {product.stock > 0 ? "Add to Cart" : "Out of stock"}
       </button>
     </div>
   );

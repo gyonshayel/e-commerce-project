@@ -9,7 +9,8 @@ export function ProductsSkeleton() {
           max-[1000px]:grid-cols-5
           max-[800px]:grid-cols-4
           max-[575px]:grid-cols-3
-          max-[450px]:grid-cols-2"
+          max-[450px]:grid-cols-2
+          mt-[60px]"
     >
       {Array.from({ length: 30 }).map((_, index) => {
         return (
