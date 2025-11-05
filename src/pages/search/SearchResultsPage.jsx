@@ -2,14 +2,18 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Header } from "../../components/Header";
 import { ProductsGrid } from "../home/ProductsGrid";
+import { ProductsSkeleton } from "../../components/ProductsSkeleton";
 
 export function SearchResultsPage() {
   const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { query } = useParams();
 
   useEffect(() => {
     const getSearchResults = async () => {
       try {
+        setLoading(true);
+
         const response = await fetch(
           `https://dummyjson.com/products/search?q=${query}`
         );
@@ -21,6 +25,8 @@ export function SearchResultsPage() {
         setResults(data.products);
       } catch (error) {
         alert(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -31,9 +37,11 @@ export function SearchResultsPage() {
     <>
       <title>E-Commerce Store</title>
       <Header />
-      {results.length === 0 ? (
+      {loading ? (
+        <ProductsSkeleton />
+      ) : results.length === 0 ? (
         <div className="text-center mt-20 text-gray-600">
-          No products found for <strong>{query}</strong>
+          No products found for "<strong>{query}</strong>"
         </div>
       ) : (
         <>

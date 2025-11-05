@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { ProductsGrid } from "./ProductsGrid";
-import { ProductsSkeleton } from "./ProductsSkeleton";
+import { ProductsSkeleton } from "../../components/ProductsSkeleton";
 
 export function HomePage() {
   const [products, setProducts] = useState([]);
