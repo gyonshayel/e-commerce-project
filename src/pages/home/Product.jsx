@@ -34,8 +34,8 @@ export function Product({ product }) {
         border-r border-b border-[#e7e7e7]"
       data-testid="product-container"
     >
-      <Link to={`/product/${product.id}/details`}>
-        <div className="flex justify-center items-center h-[180px] mb-5">
+      <Link className="mb-4" to={`/product/${product.id}/details`}>
+        <div className="h-[180px] mb-4">
           <img
             className="max-w-full max-h-full"
             data-testid="product-image"
@@ -44,7 +44,7 @@ export function Product({ product }) {
           />
         </div>
 
-        <h3 className="h-10 mb-[5px]">{product.title}</h3>
+        <h3 className="h-10 line-clamp-2">{product.title}</h3>
       </Link>
 
       <div className="flex items-center mb-2.5">
