@@ -44,7 +44,7 @@ export function Product({ product }) {
           />
         </div>
 
-        <h3 className="h-10 line-clamp-2">{product.title}</h3>
+        <h3 className="h-10 line-clamp-2 leading-5">{product.title}</h3>
       </Link>
 
       <div className="flex items-center mb-2.5">
