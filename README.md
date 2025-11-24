@@ -1,16 +1,43 @@
-# React + Vite
+# E-commerce Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A fully functional responsive E-commerce web application based on Amazon, built with React and styled using Tailwind CSS and CSS. Features a homepage with product listings from DummyJSON API, a checkout page with access to the cart, an orders page and a tracking page that simulates order status updates.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## React Compiler
+🔗 [View Live](https://e-commerce-project-nu-puce.vercel.app/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [x] Feature 1 – Ability to search and browse products.
+- [x] Feature 2 – Pagination for smooth navigation between products pages.
+- [x] Feature 3 – Add to cart functionality.
+- [x] Feature 4 – Product details page.
+- [x] Feature 5 – Ability to update or remove product quantities and change delivery option at checkout.
+- [x] Feature 6 – Order history page with 'Order Again' functionality.
+- [x] Feature 7 – Tracking page simulating order tracking.
+- [x] Feature 8 – Context API for managing cart.
+- [x] Feature 9 – React router for navigating through different pages.
+
+---
+
+## 🧰 Tech Stack
+
+- **Framework / Library:** React
+- **Styling:** Tailwind CSS / CSS
+- **Build Tool:** Vite
+- **API / Data:** DummyJSON API
+
+---
+
+## 📸 Screenshots
+
+![Home Page](./screenshots/image-1.png)
+![Checkout Page](./screenshots/image-5.png)
+![Orders Page](./screenshots/image-7.png)
+![Tracking Page](./screenshots/image-8.png)
+
+---
