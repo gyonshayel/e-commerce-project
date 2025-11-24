@@ -12,15 +12,15 @@
 
 ## ✨ Features
 
-- [x] Feature 1 – Ability to search and browse products.
-- [x] Feature 2 – Pagination for smooth navigation between products pages.
-- [x] Feature 3 – Add to cart functionality.
-- [x] Feature 4 – Product details page.
-- [x] Feature 5 – Ability to update or remove product quantities and change delivery option at checkout.
-- [x] Feature 6 – Order history page with 'Order Again' functionality.
-- [x] Feature 7 – Tracking page simulating order tracking.
-- [x] Feature 8 – Context API for managing cart.
-- [x] Feature 9 – React router for navigating through different pages.
+- Ability to search and browse products.
+- Pagination for smooth navigation between products pages.
+- Add to cart functionality.
+- Product details page.
+- Ability to update or remove product quantities and change delivery option at checkout.
+- Order history page with 'Order Again' functionality.
+- Tracking page simulating order tracking.
+- Context API for managing cart.
+- React router for navigating through different pages.
 
 ---
 
@@ -35,9 +35,9 @@
 
 ## 📸 Screenshots
 
-![Home Page](./screenshots/image-1.png)
-![Checkout Page](./screenshots/image-5.png)
-![Orders Page](./screenshots/image-7.png)
-![Tracking Page](./screenshots/image-8.png)
+![Home Page](./public/screenshots/image-1.png)
+![Checkout Page](./public/screenshots/image-5.png)
+![Orders Page](./public/screenshots/image-7.png)
+![Tracking Page](./public/screenshots/image-8.png)
 
 ---
