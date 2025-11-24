@@ -29,7 +29,7 @@
 - **Framework / Library:** React
 - **Styling:** Tailwind CSS / CSS
 - **Build Tool:** Vite
-- **API / Data:** DummyJSON API
+- **API / Data:** [DummyJSON API](https://dummyjson.com/)
 
 ---
 
